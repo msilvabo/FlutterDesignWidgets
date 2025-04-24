@@ -204,7 +204,7 @@ class SliderShowModel with ChangeNotifier {
   }
 
   set secondarycolor(Color value) {
-    _primaryColor = value;
+    _secondaryColor = value;
     notifyListeners();
   }
 }
