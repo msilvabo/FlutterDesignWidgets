@@ -17,12 +17,31 @@ class SlideShowPage extends StatelessWidget {
     ];
     return Scaffold(
       body: Center(
-        child: Slideshow(
-          slides: slides,
-          size: 600,
-          pointUp: false,
-          primarycolor: Colors.red,
-          secondcolor: Colors.black54,
-          )));
+        child: Column(
+          children: [
+            Expanded(
+              child: Slideshow(
+                slides: slides,
+                size: 600,
+                pointUp: false,
+                primarycolor: Colors.red,
+                secondcolor: Colors.grey,
+                primaryBullet: 15,
+                secondaryBullet: 5,
+                ),
+            ),
+            Expanded(
+              child: Slideshow(
+                slides: slides,
+                size: 600,
+                pointUp: false,
+                primarycolor: Colors.green,
+                secondcolor: Colors.grey,
+                primaryBullet: 25,
+                secondaryBullet: 15,
+                ),
+            ),
+          ],
+        )));
   }
 }
