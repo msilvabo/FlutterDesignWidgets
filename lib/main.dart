@@ -4,7 +4,8 @@
 // import 'package:design_app/scr/labs/slideshow_page.dart';
 // import 'package:design_app/scr/pages/animations_page.dart';
 // import 'package:design_app/scr/pages/headers_page.dart';
-import 'package:design_app/scr/pages/slideshow_page.dart';
+import 'package:design_app/scr/pages/pinteres_page.dart';
+// import 'package:design_app/scr/pages/slideshow_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Designs App',
-      home: const SlideShowPage()
+      home: PinteresPage()
     );
   }
 }
