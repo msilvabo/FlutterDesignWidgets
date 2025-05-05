@@ -9,7 +9,7 @@ class PinterestMenu extends StatelessWidget {
   final List<PinterestButton> items;
 
   
-  PinterestMenu({
+  const PinterestMenu({
     super.key,
     required this.mostrar,
     this.backgroundColor = Colors.white,
@@ -87,7 +87,6 @@ class _PinterestMenuButton extends StatelessWidget {
   final PinterestButton item;
 
   const _PinterestMenuButton({
-    super.key,
     required this.index,
     required this.item,
   });

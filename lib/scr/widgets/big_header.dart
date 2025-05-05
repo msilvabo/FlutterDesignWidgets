@@ -54,7 +54,7 @@ class IconHeader extends StatelessWidget {
 class _IconHeaderBackground extends StatelessWidget {
   final Color color1;
   final Color color2;  
-  const _IconHeaderBackground({super.key, required this.color1, required this.color2});
+  const _IconHeaderBackground({ required this.color1, required this.color2});
 
   @override
   Widget build(BuildContext context) {

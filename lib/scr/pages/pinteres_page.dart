@@ -6,6 +6,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class PinteresPage extends StatelessWidget {
+  const PinteresPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +22,6 @@ class PinteresPage extends StatelessWidget {
 }
 
 class _MenuLocation extends StatelessWidget {
-  const _MenuLocation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +123,6 @@ class _PinteresGridState extends State<PinteresGrid> {
 
 class _PinteresItem extends StatelessWidget {
   const _PinteresItem({
-    super.key,
     required this.randomHeight,
     required this.index,
   });
