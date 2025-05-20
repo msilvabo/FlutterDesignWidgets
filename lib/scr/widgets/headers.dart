@@ -285,17 +285,12 @@ class _HeaderWavePGradientainter extends CustomPainter {
     final Gradient gradiente = LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: <Color>[Color(0xff6D05E8), Color(0xffC012FF), Color(0xff6D05FA)],
-      stops: [
-        0.1,
-        0.2,
-        0.5,
-      ]
+      colors: [Colors.green, Colors.red, Colors.blue],
+      // colors: <Color>[Color(0xff6D05E8), Color(0xffC012FF), Color(0xff6D05FA)],
+      stops: [0.1, 0.2, 0.5],
     );
 
-    final Rect rect = Rect.fromCircle(
-      center: Offset(0, 125), 
-      radius: 180);
+    final Rect rect = Rect.fromCircle(center: Offset(0, 125), radius: 180);
 
     final paint = Paint()..shader = gradiente.createShader(rect);
 

@@ -1,4 +1,6 @@
+import 'package:design_app/scr/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SliverListPage extends StatelessWidget {
   const SliverListPage({super.key});
@@ -9,12 +11,10 @@ class SliverListPage extends StatelessWidget {
       // body: _Titulo(),
       body: Stack(
         children: <Widget>[
-          _MainScroll(), 
-          Positioned(
-            bottom: -10,
-            right: 0,
-            child: _BotonNewList())
-            ]),
+          _MainScroll(),
+          Positioned(bottom: -10, right: 0, child: _BotonNewList()),
+        ],
+      ),
     );
   }
 }
@@ -25,18 +25,30 @@ class _BotonNewList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final appTheme = Provider.of<ThemeChanger>(context);
     return SizedBox(
       width: size.width * 0.8,
       height: 100,
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xffED6762),        
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(50))
+          color:
+              (appTheme.darkTheme)
+                  ? appTheme.currentTheme.primaryColor
+                  : Color(0xffED6762),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(50)),
         ),
-        child: Text('CREATE NEW LIST', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 3),),
-      )
-      );
+        child: Text(
+          'CREATE NEW LIST',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 3,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -53,20 +65,16 @@ class _MainScroll extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
     return CustomScrollView(
       slivers: <Widget>[
-        // SliverAppBar(
-        //   floating: true,
-        //   backgroundColor: Colors.red,
-        //   title: Text('dd')
-        // ),
         SliverPersistentHeader(
           floating: true,
           delegate: _SliverCustomHederDelegate(
             minHeight: 170,
             maxHeight: 200,
             child: Container(
-              color: Colors.white,
+              color: appTheme.scaffoldBackgroundColor,
               alignment: Alignment.centerLeft,
               child: _Titulo(),
             ),
@@ -117,6 +125,8 @@ class _SliverCustomHederDelegate extends SliverPersistentHeaderDelegate {
 class _Titulo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final appTheme = Provider.of<ThemeChanger>(context);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -125,7 +135,10 @@ class _Titulo extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             child: Text(
               'New',
-              style: TextStyle(color: Color(0xff532128), fontSize: 50),
+              style: TextStyle(
+                color: (appTheme.darkTheme) ? Colors.grey : Color(0xff532128),
+                fontSize: 50
+                ),
             ),
           ),
           Stack(
@@ -136,13 +149,13 @@ class _Titulo extends StatelessWidget {
                 child: Container(
                   width: 120,
                   height: 8,
-                  color: Color(0xffF7CDD5),
+                  color: (appTheme.darkTheme) ? Colors.grey : Color(0xffF7CDD5),
                 ),
               ),
               Text(
                 'List',
                 style: TextStyle(
-                  color: Color(0xffD93a30),
+                  color: (appTheme.darkTheme) ? appTheme.currentTheme.primaryColor : Colors.red,
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
@@ -184,6 +197,7 @@ class _ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context);
     return Container(
       height: 130,
       width: 100,
@@ -191,7 +205,7 @@ class _ListItem extends StatelessWidget {
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.all(30),
       decoration: BoxDecoration(
-        color: color,
+        color: (appTheme.darkTheme) ? Color.lerp(appTheme.currentTheme.primaryColor, color, 0.6) : color,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(

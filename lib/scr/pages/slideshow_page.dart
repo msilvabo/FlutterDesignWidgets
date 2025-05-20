@@ -1,6 +1,8 @@
+import 'package:design_app/scr/theme/theme.dart';
 import 'package:design_app/scr/widgets/slideshow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class SlideShowPage extends StatelessWidget {
   const SlideShowPage({super.key});
@@ -15,6 +17,9 @@ class SlideShowPage extends StatelessWidget {
       SvgPicture.asset('assets/svgs/phone4.svg'),
       SvgPicture.asset('assets/svgs/phone5.svg'),
     ];
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
+    final darkTheme = Provider.of<ThemeChanger>(context).darkTheme;
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -24,7 +29,7 @@ class SlideShowPage extends StatelessWidget {
                 slides: slides,
                 size: 600,
                 pointUp: false,
-                primarycolor: Colors.red,
+                primarycolor: darkTheme ? Colors.red : appTheme.primaryColor,
                 secondcolor: Colors.grey,
                 primaryBullet: 15,
                 secondaryBullet: 5,

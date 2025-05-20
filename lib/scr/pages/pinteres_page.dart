@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:design_app/scr/theme/theme.dart';
 import 'package:design_app/scr/widgets/pinterest_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -22,11 +23,12 @@ class PinteresPage extends StatelessWidget {
 }
 
 class _MenuLocation extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
     final mostrar = Provider.of<_PinteresPageModel>(context).visible;
+
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
 
     final List<PinterestButton> items = [
       PinterestButton(
@@ -62,11 +64,11 @@ class _MenuLocation extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: PinterestMenu(
             mostrar: mostrar,
-            backgroundColor: Colors.white,
-            activeColor: Colors.black,
+            backgroundColor: appTheme.scaffoldBackgroundColor,
+            activeColor: appTheme.primaryColor,
             inactiveColor: Colors.blueGrey,
             items: items,
-            ),
+          ),
         ),
       ),
     );
@@ -122,10 +124,7 @@ class _PinteresGridState extends State<PinteresGrid> {
 }
 
 class _PinteresItem extends StatelessWidget {
-  const _PinteresItem({
-    required this.randomHeight,
-    required this.index,
-  });
+  const _PinteresItem({required this.randomHeight, required this.index});
 
   final double randomHeight;
   final int index;

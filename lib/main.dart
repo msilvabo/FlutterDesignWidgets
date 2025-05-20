@@ -1,19 +1,15 @@
-// import 'package:design_app/scr/challenges/square_animate_page.dart';
-// import 'package:design_app/scr/pages/circular_progress_page.dart';
-// import 'package:design_app/scr/pages/graphics_circle_page.dart';
-// import 'package:design_app/scr/labs/slideshow_page.dart';
-// import 'package:design_app/scr/pages/animations_page.dart';
-// import 'package:design_app/scr/pages/headers_page.dart';
-// import 'package:design_app/scr/pages/emergency_page.dart';
-import 'package:design_app/scr/pages/sliver_list_page.dart';
-// import 'package:design_app/scr/pages/tarjet_list.dart';
-// import 'package:design_app/scr/pages/pinteres_page.dart';
-// import 'package:design_app/scr/pages/pinteres_page.dart';
-// import 'package:design_app/scr/pages/slideshow_page.dart';
+import 'package:design_app/scr/pages/launche_page.dart';
+import 'package:design_app/scr/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (BuildContext context) => ThemeChanger(1),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,12 +17,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      theme: appTheme,
       title: 'Designs App',
-      home: SliverListPage()
-      // home: PinteresPage(),
+      home: LauncherPage(),
     );
   }
 }
-
